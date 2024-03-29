@@ -16,9 +16,5 @@ COPY . .
 # # Exponha a porta 3000 (ajuste conforme necessário)
 # EXPOSE 3000
 
-
-# Instalar o react
-RUN npm install -g create-react-app
-
 # Comando para iniciar o aplicativo
 CMD ["npm", "run", "dev"]
