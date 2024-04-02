@@ -5,8 +5,13 @@ import City from "./assets/city.jpg";
 import ManageData from './components/ManageData';
 import ListRender from './components/ListRender';
 import ConditionalRender from './components/ConditionalRender';
+import ShowUserName from './components/ShowUserName';
+import { useState } from 'react';
 
 function App() {
+  const name = "Joaquim";
+  const [userName] = useState("Maria")
+
   return (
     <div className="App">
       <Section />
@@ -20,6 +25,7 @@ function App() {
         <ManageData />
         <ListRender />
         <ConditionalRender />
+        <ShowUserName name={userName} />
       </div>
     </div>
   );
