@@ -8,9 +8,10 @@ import ConditionalRender from './components/ConditionalRender';
 import ShowUserName from './components/ShowUserName';
 import { useState } from 'react';
 import CarDetails from './components/CarDetails';
+import Fragment from './components/Fragment';
 
 function App() {
-  const name = "Joaquim";
+  //const name = "Joaquim";
   const [userName] = useState("Maria");
 
   const cars = [
@@ -42,6 +43,8 @@ function App() {
         {cars.map((car) => (
           <CarDetails brand={car.brand} color={car.color} km={car.km} newCar={car.newCar} />
         ))}
+        {/* fragment */}
+        <Fragment propFragment="teste"/>
       </div>
     </div>
   );
