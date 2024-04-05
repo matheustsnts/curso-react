@@ -1,31 +1,31 @@
 version: '3'
 services:
-  react-aula04-css-inline-class-app:
+  react-aula04-css-modules-app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: react-aula04-css-inline-class-app
+    container_name: react-aula04-css-modules-app
     volumes:
       - .:/app
     networks:
-      - react-aula04-css-inline-class-network
+      - react-aula04-css-modules-network
     working_dir: /app  # Adicionado o diretório de trabalho
 
-  react-aula04-css-inline-class-nginx:
+  react-aula04-css-modules-nginx:
     image: nginx
-    container_name: react-aula04-css-inline-class-nginx
+    container_name: react-aula04-css-modules-nginx
     volumes:
       - ./nginx/conf.d/app.conf:/etc/nginx/conf.d/app.conf
     ports:
       - "8080:80"
     networks:
-      - react-aula04-css-inline-class-network
+      - react-aula04-css-modules-network
     depends_on:
       - app
 
-  react-aula04-css-inline-class-postgres:
+  react-aula04-css-modules-postgres:
     image: postgres
-    container_name: react-aula04-css-inline-class-postgres
+    container_name: react-aula04-css-modules-postgres
     # volumes:
     #   - pgdata:/var/lib/postgresql/data
     ports:
@@ -35,18 +35,18 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     networks:
-      - react-aula04-css-inline-class-network
+      - react-aula04-css-modules-network
 
-  react-aula04-css-inline-class-pgadmin:
+  react-aula04-css-modules-pgadmin:
     image: dpage/pgadmin4
-    container_name: react-aula04-css-inline-class-pgadmin
+    container_name: react-aula04-css-modules-pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@react-aula04-css-inline-class.com
+      PGADMIN_DEFAULT_EMAIL: admin@react-aula04-css-modules.com
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "5050:80"
     networks:
-      - react-aula04-css-inline-class-network
+      - react-aula04-css-modules-network
 
 networks:
-  react-aula04-css-inline-class-network:
+  react-aula04-css-modules-network:
