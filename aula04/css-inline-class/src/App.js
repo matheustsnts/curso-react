@@ -20,6 +20,7 @@ function App() {
 
       <h2 style={name === "Matheus" ? ({color: "green", backgroundColor: "#000"}) : null}>Teste nome</h2>
 
+      { /* CSS Modules */ }
       <h2 className={redTitle ? "red-title" : "title"}>Esse título vai ter a classe dinâmica</h2>
     </div>
   );
