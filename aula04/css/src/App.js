@@ -14,11 +14,6 @@ function App() {
       <h1>React com CSS</h1>
       <MyComponent />
       <p>Este parágrafo é do App.js</p>
-      <h2 style={{
-        color: "green",
-        backgroundColor: "#000",
-        
-      }}></h2>
     </div>
   );
 }
