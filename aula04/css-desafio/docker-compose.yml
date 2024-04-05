@@ -1,0 +1,52 @@
+version: '3'
+services:
+  react-aula04-css-desafio-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: react-aula04-css-desafio-app
+    volumes:
+      - .:/app
+    networks:
+      - react-aula04-css-desafio-network
+    working_dir: /app  # Adicionado o diretório de trabalho
+
+  react-aula04-css-desafio-nginx:
+    image: nginx
+    container_name: react-aula04-css-desafio-nginx
+    volumes:
+      - ./nginx/conf.d/app.conf:/etc/nginx/conf.d/app.conf
+    ports:
+      - "8080:80"
+    networks:
+      - react-aula04-css-desafio-network
+    depends_on:
+      - react-aula04-css-desafio-app
+
+  react-aula04-css-desafio-postgres:
+    image: postgres
+    container_name: react-aula04-css-desafio-postgres
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    networks:
+      - react-aula04-css-desafio-network
+
+  react-aula04-css-desafio-pgadmin:
+    image: dpage/pgadmin4
+    container_name: react-aula04-css-desafio-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@react-aula04-css-desafio.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - react-aula04-css-desafio-network
+
+networks:
+  react-aula04-css-desafio-network:
