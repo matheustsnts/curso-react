@@ -1,0 +1,14 @@
+.car-detail {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.car-detail h2 {
+    color: #333;
+}
+
+.car-detail p {
+    margin: 5px 0;
+}

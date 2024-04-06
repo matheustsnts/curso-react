@@ -1,23 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import CarDetails from './components/CarDetails';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 style={{ backgroundColor: "black", color: "#D4AF37" }}>Detalhes de Carros</h1>
+      <CarDetails modelo="Toyota Camry" ano={2022} cor="Prata" bgCor="#c8e6c9" />
+      <CarDetails modelo="Honda Civic" ano={2021} cor="Vermelho" bgCor="#ffcdd2" />
+      <CarDetails modelo="Ford Mustang" ano={2020} cor="Azul" bgCor="#bbdefb" />
     </div>
   );
 }
