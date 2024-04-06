@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "aula01/desafio",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build - aula01/desafio",
+			"detail": "react-scripts build"
+		}
+	]
+}
