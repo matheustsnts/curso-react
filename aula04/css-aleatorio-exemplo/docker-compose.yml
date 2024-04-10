@@ -1,0 +1,52 @@
+version: '3'
+services:
+  react-aula04-css-aleatorio-exemplo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: react-aula04-css-aleatorio-exemplo-app
+    volumes:
+      - .:/app
+    networks:
+      - react-aula04-css-aleatorio-exemplo-network
+    working_dir: /app  # Adicionado o diretório de trabalho
+
+  react-aula04-css-aleatorio-exemplo-nginx:
+    image: nginx
+    container_name: react-aula04-css-aleatorio-exemplo-nginx
+    volumes:
+      - ./nginx/conf.d/app.conf:/etc/nginx/conf.d/app.conf
+    ports:
+      - "8080:80"
+    networks:
+      - react-aula04-css-aleatorio-exemplo-network
+    depends_on:
+      - app
+
+  react-aula04-css-aleatorio-exemplo-postgres:
+    image: postgres
+    container_name: react-aula04-css-aleatorio-exemplo-postgres
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    networks:
+      - react-aula04-css-aleatorio-exemplo-network
+
+  react-aula04-css-aleatorio-exemplo-pgadmin:
+    image: dpage/pgadmin4
+    container_name: react-aula04-css-aleatorio-exemplo-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@react-aula04-css-aleatorio-exemplo.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - react-aula04-css-aleatorio-exemplo-network
+
+networks:
+  react-aula04-css-aleatorio-exemplo-network:
