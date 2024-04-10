@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+h1 {
+  color: orange;
+  background: #000;
+}
+
+.car-container {
+  display: flex;
+  justify-content: center;
+}
+
+.car-container div {
+  margin-top: 50px;
+}
