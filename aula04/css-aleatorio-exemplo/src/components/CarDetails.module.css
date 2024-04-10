@@ -1,0 +1,13 @@
+.card{
+    background-color: rgb(76, 76, 250);
+    border-radius: .5rem;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    color: white;
+    width: 200px;
+}
+
+.statusCar{
+    color: yellow;
+}
