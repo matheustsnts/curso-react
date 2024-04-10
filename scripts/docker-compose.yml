@@ -1,0 +1,52 @@
+version: '3'
+services:
+  react-[pasta-principal]-[pasta-react-criada]-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: react-[pasta-principal]-[pasta-react-criada]-app
+    volumes:
+      - .:/app
+    networks:
+      - react-[pasta-principal]-[pasta-react-criada]-network
+    working_dir: /app  # Adicionado o diretório de trabalho
+
+  react-[pasta-principal]-[pasta-react-criada]-nginx:
+    image: nginx
+    container_name: react-[pasta-principal]-[pasta-react-criada]-nginx
+    volumes:
+      - ./nginx/conf.d/app.conf:/etc/nginx/conf.d/app.conf
+    ports:
+      - "8080:80"
+    networks:
+      - react-[pasta-principal]-[pasta-react-criada]-network
+    depends_on:
+      - app
+
+  react-[pasta-principal]-[pasta-react-criada]-postgres:
+    image: postgres
+    container_name: react-[pasta-principal]-[pasta-react-criada]-postgres
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    networks:
+      - react-[pasta-principal]-[pasta-react-criada]-network
+
+  react-[pasta-principal]-[pasta-react-criada]-pgadmin:
+    image: dpage/pgadmin4
+    container_name: react-[pasta-principal]-[pasta-react-criada]-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@react-[pasta-principal]-[pasta-react-criada].com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - react-[pasta-principal]-[pasta-react-criada]-network
+
+networks:
+  react-[pasta-principal]-[pasta-react-criada]-network:
